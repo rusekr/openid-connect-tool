@@ -1,9 +1,9 @@
 var defaultSettings = {
-    authority: 'http://locahost:8080/auth/realms/test',
+    authority: 'https://locahost:3443/.well-known/openid-configuration',
     client_id: 'partner-public',
     client_secret: '',
     response_type: 'code',
-    scope: 'partner offline_access',
+    scope: 'openid partner offline_access',
     redirect_uri: window.location.protocol + '//' + window.location.host,
     token : false
 };
@@ -261,9 +261,9 @@ function pullSettingsFromUI() {
   settings.scope = $('#scope').val();
   settings.redirect_uri = $('#redirect_uri').val();
 
-  protocolUrl = settings.authority + '/protocol/openid-connect';
+  protocolUrl = settings.authority;
   tokenUrl = protocolUrl + '/token';
-  authUrl = protocolUrl + '/auth';
+  authUrl = protocolUrl + '/authorize';
   userInfoUrl = protocolUrl + '/userinfo';
   logoutUrl = protocolUrl + '/logout';
 }

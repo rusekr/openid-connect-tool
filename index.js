@@ -114,7 +114,7 @@ ${postBody}
                 .done(function (data) {
                     settings.token = data;
                     $('#response').val(JSON.stringify(data, null, '    '));
-                    $('#decoded-token').val(JSON.stringify(jwt_decode(data.access_token), null, '    '));
+                    $('#decoded-token').val(JSON.stringify(jwt_decode(data.id_token), null, '    '));
                     saveSettingsInLocalStorage();
                 })
                 .fail(function (data, status, error) {
@@ -277,7 +277,7 @@ function loadSettingsIntoUI() {
     $('#redirect_uri').val(settings.redirect_uri);
     $('#app-setting-input').val(JSON.stringify(settings));
     if (settings.token) {
-      $('#decoded-token').val(JSON.stringify(jwt_decode(settings.token.access_token), null, '    '));
+      $('#decoded-token').val(JSON.stringify(jwt_decode(settings.token.id_token), null, '    '));
     }
 }
 
